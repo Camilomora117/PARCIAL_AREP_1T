@@ -59,23 +59,29 @@ public class HttpServer {
                     ArrayList<String> response = serviceChatGPT.getClass(command);
                     outputLine = getHtmlSimpleForm(getList(response));
 
+                } else if (service.startsWith("invoke")) {
+                    String command = request.split("\\(")[1].split("\\)")[0].replace(" ", "");
+                    String className = command.split(",")[0];
+                    String method = command.split(",")[1];
+                    ArrayList<String> response = serviceChatGPT.getInvoke(className, method);
+                    outputLine = getHtmlSimpleForm(getList(response));
                 } else if (service.startsWith("unaryInvoke")) {
                     String command = request.split("\\(")[1].split("\\)")[0].replace(" ", "");
                     String className = command.split(",")[0];
                     String method = command.split(",")[1];
                     String type = command.split(",")[2];
                     String param = command.split(",")[3].replace("\"", "");
-                    System.out.println(className + " metodo " + method + " type " + type + " param " + param);
-                    ArrayList<String> response = serviceChatGPT.getInvoke(className, method, type, param);
+                    ArrayList<String> response = serviceChatGPT.getUnaryInvoke(className, method, type, param);
                     outputLine = getHtmlSimpleForm(getList(response));
                 } else if (service.startsWith("binaryInvoke")) {
                     String command = request.split("\\(")[1].split("\\)")[0].replace(" ", "");
                     String className = command.split(",")[0];
                     String method = command.split(",")[1];
-                    String type = command.split(",")[2];
-                    String param = command.split(",")[3].replace("\"", "");
-                    System.out.println(className + " metodo " + method + " type " + type + " param " + param);
-                    ArrayList<String> response = serviceChatGPT.getInvoke(className, method, type, param);
+                    String type1 = command.split(",")[2];
+                    String param1 = command.split(",")[3];
+                    String type2 = command.split(",")[4];
+                    String param2 = command.split(",")[5];
+                    ArrayList<String> response = serviceChatGPT.getBinaryInvoke(className, method, type1, param1, type2, param2);
                     outputLine = getHtmlSimpleForm(getList(response));
                 } else {
                     outputLine = getHeader() + getPageHtml();
