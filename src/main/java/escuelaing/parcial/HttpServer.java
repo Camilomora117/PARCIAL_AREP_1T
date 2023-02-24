@@ -118,7 +118,7 @@ public class HttpServer {
     public static String getList(ArrayList<String> values) {
         String response = "";
         for(String v: values) {
-            String etiqueta = "<h2> " + v + "</h2>";
+            String etiqueta = "<h3> " + v + "</h3>";
             response += etiqueta;
             response += "\r\n";
         }

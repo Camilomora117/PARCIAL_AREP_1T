@@ -61,7 +61,7 @@ public class ServiceChatGPT {
                 Class[] clas = new Class[]{int.class};
                 Method m = c.getDeclaredMethod(method,  clas);
                 response.add(m.invoke(null, Integer.parseInt(param)).toString());
-            } else if (Objects.equals(type, "Double")) {
+            } else if (Objects.equals(type, "double")) {
                 Class[] clas = new Class[]{Double.class};
                 Method m = c.getDeclaredMethod(method,  clas);
                 response.add(m.invoke(null, Double.parseDouble(param)).toString());
@@ -89,7 +89,7 @@ public class ServiceChatGPT {
                 Class[] clas = new Class[]{int.class, int.class};
                 Method m = c.getDeclaredMethod(method,  clas);
                 response.add(m.invoke(null, Integer.parseInt(param1),Integer.parseInt(param2)).toString());
-            } else if (Objects.equals(type1, "Double")) {
+            } else if (Objects.equals(type1, "double")) {
                 Class[] clas = new Class[]{Double.class, Double.class};
                 Method m = c.getDeclaredMethod(method,  clas);
                 response.add(m.invoke(null, Double.parseDouble(param1), Double.parseDouble(param2)).toString());
