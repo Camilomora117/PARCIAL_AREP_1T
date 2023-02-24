@@ -64,7 +64,7 @@ public class ServiceChatGPT {
             } else if (Objects.equals(type, "double")) {
                 Class[] clas = new Class[]{double.class};
                 Method m = c.getDeclaredMethod(method,  clas);
-                response.add(m.invoke(null, double.parseDouble(param)).toString());
+                response.add(m.invoke(null, Double.parseDouble(param)).toString());
             } else {
                 response.add("Solo funciona con Parametros de tipo int y String y Double");
             }
@@ -92,7 +92,7 @@ public class ServiceChatGPT {
             } else if (Objects.equals(type1, "double")) {
                 Class[] clas = new Class[]{double.class, double.class};
                 Method m = c.getDeclaredMethod(method,  clas);
-                response.add(m.invoke(null, double.parseDouble(param1), double.parseDouble(param2)).toString());
+                response.add(m.invoke(null, Double.parseDouble(param1), Double.parseDouble(param2)).toString());
             } else {
                 response.add("Solo funciona con Parametros de tipo int y String y Double");
             }
